@@ -1,0 +1,33 @@
+.itemContainer {
+    width: 40vh;
+    height: 40vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.4);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 1);
+    border-radius: 8px;
+}
+
+.itemContainer:hover {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.itemContainer img {
+    max-height: 25vh;
+    max-width: auto;
+    width: auto;
+    height: auto;
+    margin-bottom: 5%;
+}
+
+.itemContainer h2 {
+    text-align: center;
+    margin: 0;
+}
+
+.itemContainer h6 {
+    text-align: center;
+    margin: 0;
+}
