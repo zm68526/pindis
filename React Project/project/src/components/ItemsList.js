@@ -4,16 +4,15 @@ import Item from './Item.js';
 // import './UsersList.css';
 // import './User.css';
 
-const UsersList = function(props) {
+const ItemsList = function(props) {
     return (
         <Card className="users"> 
             <ul>
                 {props.items.map((user) => (
                   <Item
-                    id={user.id}
+                    name={user.name}
                     img={user.img}
-                    age={user.age}
-                    major={user.major}
+                    id={1232}
                    />
                 ))}
             </ul>
@@ -21,4 +20,4 @@ const UsersList = function(props) {
     );
 }
 
-export default UsersList;
+export default ItemsList;

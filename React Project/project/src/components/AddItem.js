@@ -6,64 +6,37 @@ import Button from './Button';
 
 const AddItem = (props) => {
 
-  const [enteredId, setEnteredId] = useState('');
-  const [enteredAge, setEnteredAge] = useState('');
+  // only doing img and name for now since that's all that's required for this checkpoint - eventually we will add description and tags as well
   const [enteredImg, setEnteredImg] = useState('');
-  const [enteredMajor, setEnteredMajor] = useState('');
-
-  const idChangeHandler = (event) => {
-    setEnteredId(event.target.value);
-  };
-
-  const ageChangeHandler = (event) => {
-    setEnteredAge(event.target.value);
-  };
+  const [enteredName, setEnteredName] = useState('');
 
   const imgChangeHandler = (event) => {
     setEnteredImg(event.target.value);
   };
 
-  const majorChangeHandler = (event) => {
-    setEnteredMajor(event.target.value);
+  const nameChangeHandler = (event) => {
+    setEnteredName(event.target.value);
   };
 
   const submitHandler = (event) => {
     event.preventDefault();
 
-    const userData = {
-      id: enteredId,
-      age: enteredAge,
+    const itemData = {
       img: enteredImg,
-      major: enteredMajor
+      name: enteredName
     }
 
-    if (!(userData.id.trim().length === 0)) {
-      props.onAddUser(userData);
+    if (!(itemData.name.trim().length === 0)) {
+      props.onAddItem(itemData);
     }
 
-    setEnteredId('');
-    setEnteredAge('');
     setEnteredImg('');
-    setEnteredMajor('');
+    setEnteredName('');
   }
 
   return (
     <Card className="input">
       <form onSubmit={submitHandler}>
-        <label>Username</label>
-        <input
-          id="username"
-          type="text"
-          value = {enteredId}
-          onChange = {idChangeHandler}
-        />
-        <label>Age (Years)</label>
-        <input
-          id="age"
-          type="number"
-          value = {enteredAge}
-          onChange = {ageChangeHandler}
-        />
         <label>Link to image</label>
          <input
           id="img"
@@ -71,14 +44,14 @@ const AddItem = (props) => {
           value = {enteredImg}
           onChange = {imgChangeHandler}
         />
-        <label>Major</label>
+        <label>Name</label>
          <input
-          id="major"
+          id="name"
           type="text"
-          value = {enteredMajor}
-          onChange = {majorChangeHandler}
+          value = {enteredName}
+          onChange = {nameChangeHandler}
         />
-        <Button type="submit">Add User</Button>
+        <Button type="submit">Pin Item</Button>
       </form>
     </Card>
   );

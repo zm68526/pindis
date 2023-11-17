@@ -4,11 +4,9 @@ import React from 'react';
 const Item = props => {
     return (    
         <li key={props.id} className="user-item">
-        <img src={props.img} className="user-img" alt={props.name} />
+        <img src={props.img} className="user-img" alt={props.name} width="100px" />
         <div className="user-info">
-            <h2>{props.id}</h2>
-            <h3>{props.age} years old </h3>
-            <h3 className="user-content">Major: {props.major}</h3>
+            <h2>{props.name}</h2>
         </div>
         </li>
     )
