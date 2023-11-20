@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 function AddItemPage(props) {
   const navigate = useNavigate();
     const itemAddHandler = function(itemData) {
+        navigate('/loggedin')
         itemData.id=123;
         props.addItemHandler(itemData);
     };
