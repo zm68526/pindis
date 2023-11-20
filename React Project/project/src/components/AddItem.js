@@ -10,6 +10,7 @@ const AddItem = (props) => {
   // only doing img and name for now since that's all that's required for this checkpoint - eventually we will add description and tags as well
   const [enteredImg, setEnteredImg] = useState('');
   const [enteredName, setEnteredName] = useState('');
+  const [enteredDescription, setEnteredDescription] = useState('');
 
   const imgChangeHandler = (event) => {
     setEnteredImg(event.target.value);
@@ -19,12 +20,17 @@ const AddItem = (props) => {
     setEnteredName(event.target.value);
   };
 
+  const descriptionChangeHandler = (event) => {
+    setEnteredDescription(event.target.value);
+  };
+
   const submitHandler = (event) => {
     event.preventDefault();
 
     const itemData = {
       img: enteredImg,
-      name: enteredName
+      name: enteredName,
+      description: enteredDescription
     }
 
     if (!(itemData.name.trim().length === 0)) {
@@ -33,6 +39,7 @@ const AddItem = (props) => {
 
     setEnteredImg('');
     setEnteredName('');
+    setEnteredDescription('');
   }
 
   return (
@@ -51,6 +58,13 @@ const AddItem = (props) => {
           type="text"
           value = {enteredName}
           onChange = {nameChangeHandler}
+        />
+        <label>Info</label>
+         <input
+          id="description"
+          type="text"
+          value = {enteredDescription}
+          onChange = {descriptionChangeHandler}
         />
         <Button type="submit">Pin Item</Button>
       </form>
