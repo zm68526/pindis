@@ -14,6 +14,9 @@ const Hdr = (props) => {
   const addItemHandler = function() {
     navigate("/add");
   }
+  const signupToggle = function() {
+    navigate("/signup");
+  }
 
   if (props.isLoggedIn === false) {
     return (
@@ -21,7 +24,7 @@ const Hdr = (props) => {
         <h1>PinDis</h1>
         <div className="buttons">
           <Button onClick={authenticationToggle}>Login</Button>
-          <Button onClick={authenticationToggle}>Sign Up</Button>
+          <Button onClick={signupToggle}>Sign Up</Button>
         </div>
       </div>
     );

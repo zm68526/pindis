@@ -1,5 +1,6 @@
 import './App.css';
 import AddItemPage from './AddItemPage.js';
+import SignupPage from './SignupPage.js';
 import UnauthenticatedView from './UnauthenticatedView.js';
 import AuthenticatedView from './AuthenticatedView.js';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
@@ -67,6 +68,7 @@ function App() {
           <Route exact path='/' element={<UnauthenticatedView pins={items} />} />
           <Route path='/loggedin' element={<AuthenticatedView pins={items} />} />
           <Route path='/add' element={<AddItemPage addItemHandler={addItemHandler}/>} />
+          <Route path='/signup' element={<SignupPage/>} />
         </Routes>
       </div>
     </Router>
