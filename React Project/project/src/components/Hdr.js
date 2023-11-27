@@ -17,13 +17,16 @@ const Hdr = (props) => {
   const signupToggle = function() {
     navigate("/signup");
   }
+  const loginToggle = function() {
+    navigate("/login");
+  }
 
   if (props.isLoggedIn === false) {
     return (
       <div className="hdr">
         <h1>PinDis</h1>
         <div className="buttons">
-          <Button onClick={authenticationToggle}>Login</Button>
+          <Button onClick={loginToggle}>Login</Button>
           <Button onClick={signupToggle}>Sign Up</Button>
         </div>
       </div>
