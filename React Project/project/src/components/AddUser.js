@@ -25,9 +25,10 @@ const AddUser = (props) => {
       password: enteredPassword
     }
 
-    if (!(userData.name.trim().length === 0)) {
-       // props.onAddUser(userData);
-      }
+    if (!(userData.username.trim().length === 0)) {
+      props.onAddItem(userData);
+      //here is where we need to send info to database
+    }
 
     setEnteredUsername('');
     setEnteredPassword('');
@@ -36,6 +37,7 @@ const AddUser = (props) => {
   return (
     <Card className="input">
       <form onSubmit={submitHandler}>
+        <h1>Signup With PinDis</h1>
         <label>Username</label>
          <input
           id="username"

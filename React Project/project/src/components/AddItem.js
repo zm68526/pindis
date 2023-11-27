@@ -34,6 +34,7 @@ const AddItem = (props) => {
 
     if (!(itemData.name.trim().length === 0)) {
       props.onAddItem(itemData);
+      //send info to database
     }
 
     setEnteredImg('');
