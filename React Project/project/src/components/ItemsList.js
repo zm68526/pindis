@@ -13,7 +13,6 @@ const ItemsList = function(props) {
                 name={item.name}
                 img={item.img}
                 description={item.description}
-                id={1232}
                />
             ))}
         </div>

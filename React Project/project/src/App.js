@@ -6,10 +6,9 @@ import UnauthenticatedView from './UnauthenticatedView.js';
 import AuthenticatedView from './AuthenticatedView.js';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { useState } from 'react';
+import Axios from 'axios';
 
 function App() {
-
-
   const DUMMY_ARRAY = [
     {
       name: 'React Logo',
@@ -58,11 +57,14 @@ function App() {
     }
   ];
   const [items,setItems] = useState(DUMMY_ARRAY);
-  const addItemHandler = item => {
-    setItems((prevItems) => {
+  const addItemHandler = async function(item) {
+    Axios.post('http://localhost:8080/pins', item)
+    .then(response => console.log(response))
+    .catch(error => console.log(error));
+    /** setItems((prevItems) => {
       return [item, ...prevItems];
-    });
-  }
+    }); */
+  };
 
   return (
     <Router>
