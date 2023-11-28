@@ -72,7 +72,7 @@ function App() {
         <Routes>
           <Route exact path='/' element={<UnauthenticatedView pins={items} />} />
           <Route path='/loggedin' element={<AuthenticatedView pins={items} />} />
-          <Route path='/add' element={<AddItemPage addItemHandler={addItemHandler}/>} />
+          <Route path='/add' element={<AddItemPage />} />
           <Route path='/signup' element={<SignupPage/>} />
           <Route path='/login' element={<LoginPage/>} />
         </Routes>
