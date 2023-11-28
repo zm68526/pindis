@@ -1,15 +1,17 @@
 import React from 'react';
 import AddUser from './components/AddUser';
 import { useNavigate } from "react-router-dom";
+import Axios from 'axios';
 
 function SignupPage(props) {
 
   const navigate = useNavigate();
-    const userAddHandler = function(userData) {
-        navigate('/loggedin')
-        userData.id=123;
-        //props.addItemHandler(itemData);
-    };
+  const userAddHandler = async function(userData) {
+      Axios.post('http://localhost:8080/users', userData)
+      .then(response => console.log(response))
+      .catch(error => console.log(error));
+      navigate('/loggedin')
+  };
 
   return (
     <div>
