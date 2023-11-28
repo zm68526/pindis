@@ -5,7 +5,9 @@ const port = process.env.PORT || 8080;
 const mongoose = require('mongoose');
 const cors = require('cors');
 const pins = require('./routes/pins');
+const users = require('./routes/users');
 app.use('/pins', pins);
+app.use('/users', users);
 
 // Connect Database
 app.use(cors({ origin: true, credentials: 'http://localhost:3000' }));
