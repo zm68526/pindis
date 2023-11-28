@@ -6,9 +6,11 @@ import UnauthenticatedView from './UnauthenticatedView.js';
 import AuthenticatedView from './AuthenticatedView.js';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { useState } from 'react';
+import { useEffect } from 'react';
 import Axios from 'axios';
 
 function App() {
+
   const DUMMY_ARRAY = [
     {
       name: 'React Logo',
@@ -56,16 +58,19 @@ function App() {
       description: 'A nice city'
     }
   ];
-  const [items,setItems] = useState(DUMMY_ARRAY);
-  const addItemHandler = async function(item) {
-    Axios.post('http://localhost:8080/pins', item)
-    .then(response => console.log(response))
-    .catch(error => console.log(error));
-    /** setItems((prevItems) => {
-      return [item, ...prevItems];
-    }); */
-  };
 
+  const [items,setItems] = useState(DUMMY_ARRAY);
+  
+  const itemUpdate = async function() {
+    let initialResponse = '';
+    await Axios.get('http://localhost:8080/pins/')
+    .then(response => initialResponse = response)
+    .catch(error => (console.log(error)));
+    console.log(initialResponse);
+    // setItems(initialResponse); // this line is causing errors
+  }
+  itemUpdate();
+  
   return (
     <Router>
       <div>
@@ -79,6 +84,7 @@ function App() {
       </div>
     </Router>
   );
+  
 }
 
 export default App;
