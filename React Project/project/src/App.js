@@ -69,7 +69,7 @@ function App() {
     console.log("updated");
     setItems(initialResponse.data);
   } 
-  itemUpdate();
+  if (!items) itemUpdate();
 
   /*
   const itemUpdatePromise = new Promise((resolve, reject) => {
