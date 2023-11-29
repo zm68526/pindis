@@ -58,18 +58,34 @@ function App() {
       description: 'A nice city'
     }
   ];
-
-  const [items,setItems] = useState(DUMMY_ARRAY);
+  
+  const [items,setItems] = useState();
   
   const itemUpdate = async function() {
     let initialResponse = '';
     await Axios.get('http://localhost:8080/pins/')
     .then(response => initialResponse = response)
     .catch(error => (console.log(error)));
-    console.log(initialResponse);
-    // setItems(initialResponse); // this line is causing errors
-  }
+    console.log("updated");
+    setItems(initialResponse.data);
+  } 
   itemUpdate();
+
+  /*
+  const itemUpdatePromise = new Promise((resolve, reject) => {
+    let initialResponse = '';
+    Axios.get('http://localhost:8080/pins/')
+    .then(response => initialResponse = response)
+    .catch(error => (console.log(error)));
+    console.log("updated");
+    resolve(initialResponse);
+  })
+  itemUpdatePromise.then(initialResponse => {
+    starterItems = initialResponse.data;
+    updated = 1;
+  }) */
+
+  if (!items) return null;
   
   return (
     <Router>
@@ -84,7 +100,6 @@ function App() {
       </div>
     </Router>
   );
-  
 }
 
 export default App;
