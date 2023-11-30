@@ -12,7 +12,11 @@ const PinSchema = new mongoose.Schema({
     description: {
         type: String,
         default: '',
-    }
+    },
+    user: {
+        type: String,
+        default: '',
+    } 
 });
 
 module.exports = Item = mongoose.model('pins', PinSchema);

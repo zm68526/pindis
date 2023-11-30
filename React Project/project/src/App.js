@@ -9,6 +9,7 @@ import ErrorPage from './ErrorPage.js';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { useState } from 'react';
 import { useEffect } from 'react';
+// import { useNavigate } from "react-router-dom"; <-- not allowed to use in App.js specifically
 import Axios from 'axios';
 
 function App() {
@@ -62,6 +63,7 @@ function App() {
   ];
   
   const [items,setItems] = useState();
+  const [currentUser,setCurrentUser] = useState('default');
   
   const itemUpdate = async function() {
     let initialResponse = '';
@@ -88,16 +90,21 @@ function App() {
   }) */
 
   if (!items) return null;
+
+  const loginHandler = function(userData) {
+      setCurrentUser(userData.username);
+      itemUpdate();
+  };
   
   return (
     <Router>
       <div>
         <Routes>
           <Route exact path='/' element={<UnauthenticatedView pins={items} rerenderHandler={itemUpdate}/>} />
-          <Route path='/loggedin' element={<AuthenticatedView pins={items} rerenderHandler={itemUpdate} />} />
-          <Route path='/add' element={<AddItemPage rerenderHandler={itemUpdate}/>} />
+          <Route path='/loggedin' element={<AuthenticatedView pins={items} rerenderHandler={itemUpdate} user={currentUser}/>} />
+          <Route path='/add' element={<AddItemPage rerenderHandler={itemUpdate} user={currentUser}/>} />
           <Route path='/signup' element={<SignupPage/>} />
-          <Route path='/login' element={<LoginPage/>} />
+          <Route path='/login' element={<LoginPage loginHandler={loginHandler}/>} />
           <Route path='edit-item/:id' element={<EditItemPage rerenderHandler={itemUpdate}/>} />
           <Route path='*' element={<ErrorPage />} />
         </Routes>
