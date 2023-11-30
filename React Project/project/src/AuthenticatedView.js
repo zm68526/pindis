@@ -7,7 +7,7 @@ function AuthenticatedView(props) {
   return (
     <div>
       <Hdr isLoggedIn={true}/>
-      <ItemsList items={props.pins} />
+      <ItemsList isLoggedIn={true} items={props.pins} />
     </div>
   );
 }

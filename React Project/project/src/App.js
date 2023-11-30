@@ -4,6 +4,7 @@ import SignupPage from './SignupPage.js';
 import LoginPage from './LoginPage.js';
 import UnauthenticatedView from './UnauthenticatedView.js';
 import AuthenticatedView from './AuthenticatedView.js';
+import EditItemPage from './EditItemPage.js';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { useState } from 'react';
 import { useEffect } from 'react';
@@ -96,6 +97,7 @@ function App() {
           <Route path='/add' element={<AddItemPage />} />
           <Route path='/signup' element={<SignupPage/>} />
           <Route path='/login' element={<LoginPage/>} />
+          <Route path='edit-item/:id' element={<EditItemPage />} />
         </Routes>
       </div>
     </Router>

@@ -2,9 +2,10 @@ import React from 'react';
 import Card from './Card.js';
 import Item from './Item.js';
 import './ItemsList.css';
-// import './User.css';
 
 const ItemsList = function(props) {
+
+
     return (
         <Card> 
         <div className="itemsListContainer">
@@ -13,6 +14,8 @@ const ItemsList = function(props) {
                 name={item.name}
                 img={item.img}
                 description={item.description}
+                isLoggedIn={props.isLoggedIn}
+                id={item._id}
                />
             ))}
         </div>

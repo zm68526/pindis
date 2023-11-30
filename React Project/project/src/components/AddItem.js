@@ -6,7 +6,6 @@ import './AddItem.css'
 
 const AddItem = (props) => {
 
-  // only doing img and name for now since that's all that's required for this checkpoint - eventually we will add description and tags as well
   const [enteredImg, setEnteredImg] = useState('');
   const [enteredName, setEnteredName] = useState('');
   const [enteredDescription, setEnteredDescription] = useState('');

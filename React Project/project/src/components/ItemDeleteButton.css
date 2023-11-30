@@ -1,0 +1,14 @@
+.Item-Delete-Button {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 4px;
+    padding: 0;
+    background: none;
+    font-size: 130%;
+}
+
+.Item-Delete-Button:hover {
+    background: none;
+    color: red;
+}
