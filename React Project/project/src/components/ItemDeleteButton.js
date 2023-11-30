@@ -10,6 +10,7 @@ const ItemDeleteButton = props => {
         .then(response => console.log(response))
         .catch(error => (console.log(error)));
         console.log("deleted");
+        props.rerenderHandler();
       } 
     return (
         <button onClick={() => deleteItemHandler(props.id)} className="Item-Delete-Button material-symbols-outlined">delete</button>

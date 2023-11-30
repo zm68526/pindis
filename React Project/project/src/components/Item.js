@@ -11,7 +11,7 @@ const Item = props => {
             <img src={props.img} className="item-img" alt={props.name} width="100px" />
             <h6 className='item-description'>{props.description}</h6>
             <ItemEditButton id={props.id} />
-            <ItemDeleteButton id={props.id} />
+            <ItemDeleteButton id={props.id} rerenderHandler={props.rerenderHandler}/>
         </div>
         )
     } else {

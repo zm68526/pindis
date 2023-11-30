@@ -16,6 +16,7 @@ const ItemsList = function(props) {
                 description={item.description}
                 isLoggedIn={props.isLoggedIn}
                 id={item._id}
+                rerenderHandler = {props.rerenderHandler}
                />
             ))}
         </div>

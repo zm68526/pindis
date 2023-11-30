@@ -5,6 +5,7 @@ import LoginPage from './LoginPage.js';
 import UnauthenticatedView from './UnauthenticatedView.js';
 import AuthenticatedView from './AuthenticatedView.js';
 import EditItemPage from './EditItemPage.js';
+import ErrorPage from './ErrorPage.js';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { useState } from 'react';
 import { useEffect } from 'react';
@@ -92,12 +93,13 @@ function App() {
     <Router>
       <div>
         <Routes>
-          <Route exact path='/' element={<UnauthenticatedView pins={items} />} />
-          <Route path='/loggedin' element={<AuthenticatedView pins={items} />} />
-          <Route path='/add' element={<AddItemPage />} />
+          <Route exact path='/' element={<UnauthenticatedView pins={items} rerenderHandler={itemUpdate}/>} />
+          <Route path='/loggedin' element={<AuthenticatedView pins={items} rerenderHandler={itemUpdate} />} />
+          <Route path='/add' element={<AddItemPage rerenderHandler={itemUpdate}/>} />
           <Route path='/signup' element={<SignupPage/>} />
           <Route path='/login' element={<LoginPage/>} />
-          <Route path='edit-item/:id' element={<EditItemPage />} />
+          <Route path='edit-item/:id' element={<EditItemPage rerenderHandler={itemUpdate}/>} />
+          <Route path='*' element={<ErrorPage />} />
         </Routes>
       </div>
     </Router>

@@ -33,6 +33,7 @@ function EditItemPage(props) {
     } catch (error) {
       console.error('Error updating item:', error);
     }
+    props.rerenderHandler();
   };
 
   return (

@@ -11,7 +11,7 @@ function AddItemPage(props) {
         .catch(error => console.log(error));
         navigate('/loggedin')
     };
-
+    props.rerenderHandler();
   return (
     <div>
         <AddItem onAddItem={itemAddHandler} />

@@ -1,0 +1,15 @@
+h1 {
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+}
+
+a {
+    color: #4caf50;
+}
+
+a:hover {
+    background-color: black;
+}
