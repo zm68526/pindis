@@ -1,8 +1,10 @@
 const express = require('express');
+const bcryptjs = require("bcryptjs");
 const router = express.Router();
+const jwt = require("jsonwebtoken");
+//const auth = require("../middleware/auth");
 const bodyParser = require('body-parser')
 const cors = require('cors');
-
 const User = require('../models/User');
 
 router.use(bodyParser.urlencoded({extended: true}));
@@ -17,11 +19,32 @@ router.use(function(req, res, next) {
     next();
 });
 
-router.post('/', (req,res) => {
-    const body = req.body;
-    User.create(body)
-    .then((item) => res.json({msg: 'Pin added successfully'}))
-    .catch((err) => console.log(err));
+router.post('/', async (req,res) => {
+    try {
+        const { username, password } = req.body;
+        if(!username || !password) {
+            return res.status(400).json({ msg: "Please enter all the fields"});
+        }
+        if (password.length < 6) {
+            return res
+            .status(400)
+            .json({ msg: "Password should be at least 6 characters"});
+        }
+        const existingUser = await User.findOne({ username });
+        if (existingUser) {
+            return res
+            .status(400)
+            .json({ msg: "User with the same username already exists" });
+        }
+        const hashedPassword = await bcryptjs.hash(password, 8);
+        const newUser = new User({ username, password: hashedPassword });
+
+        const savedUser = await newUser.save();
+        console.log(savedUser.username);
+        res.json(savedUser);
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
 }); 
 
 router.get('/', (req, res) => {
