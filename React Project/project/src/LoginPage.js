@@ -8,7 +8,7 @@ function LoginPage(props) {
   const navigate = useNavigate();
     const userAddHandler = function(userData) {
         props.loginHandler(userData);
-        navigate('/loggedin');
+        navigate('/loggedin ');
     };
 
   return (
