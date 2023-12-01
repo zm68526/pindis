@@ -65,7 +65,7 @@ const EditItem = (props) => {
           value = {enteredDescription}
           onChange = {descriptionChangeHandler}
         />
-        <Button type="submit">Pin Item</Button>
+        <Button type="submit">Apply</Button>
       </form>
     </Card>
   );

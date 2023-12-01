@@ -29,7 +29,7 @@ function EditItemPage(props) {
   const itemEditHandler = async function (itemData) {
     try {
       await Axios.put(`http://localhost:8080/pins/${id}`, itemData);
-      navigate('/loggedin');
+      navigate('/myPins');
     } catch (error) {
       console.error('Error updating item:', error);
     }

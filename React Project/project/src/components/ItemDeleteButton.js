@@ -9,7 +9,6 @@ const ItemDeleteButton = props => {
         await Axios.delete(`http://localhost:8080/pins/${id}`)
         .then(response => console.log(response))
         .catch(error => (console.log(error)));
-        console.log("deleted");
         props.rerenderHandler();
       } 
     return (

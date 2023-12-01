@@ -11,6 +11,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 // import { useNavigate } from "react-router-dom"; <-- not allowed to use in App.js specifically
 import Axios from 'axios';
+import MyPins from './MyPins.js';
 
 function App() {
 
@@ -106,6 +107,7 @@ function App() {
           <Route path='/signup' element={<SignupPage/>} />
           <Route path='/login' element={<LoginPage loginHandler={loginHandler}/>} />
           <Route path='edit-item/:id' element={<EditItemPage rerenderHandler={itemUpdate}/>} />
+          <Route path='/myPins' element={<MyPins user={currentUser} pins={items} rerenderHandler={itemUpdate} />} />
           <Route path='*' element={<ErrorPage />} />
         </Routes>
       </div>

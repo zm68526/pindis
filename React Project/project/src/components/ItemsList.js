@@ -14,7 +14,7 @@ const ItemsList = function(props) {
                 name={item.name}
                 img={item.img}
                 description={item.description}
-                isLoggedIn={props.isLoggedIn}
+                showEditDelete={props.showEditDelete}
                 id={item._id}
                 rerenderHandler = {props.rerenderHandler}
                />

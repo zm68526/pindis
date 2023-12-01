@@ -4,7 +4,7 @@ import ItemEditButton from './ItemEditButton';
 import ItemDeleteButton from './ItemDeleteButton';
 
 const Item = props => {
-    if (props.isLoggedIn) {
+    if (props.showEditDelete) {
         return (
             <div className="itemContainer" key={props._id}>
             <h2>{props.name}</h2>
