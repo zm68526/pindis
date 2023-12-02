@@ -20,7 +20,7 @@ router.use(function(req, res, next) {
 });
 
 
-router.post('/', async (req,res) => {
+router.post('/signup', async (req,res) => {
     try {
         const { username, password } = req.body;
         if (!username || !password) {
@@ -39,6 +39,30 @@ router.post('/', async (req,res) => {
         const savedUser = await newUser.save();
         console.log(savedUser.username);
         res.json(savedUser);
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+});
+
+router.post("/login", async (req, res) => {
+    try {
+        const { username, password } = req.body;
+        if(!username || !password) {
+            return res.status(400).json({ error: "Please enter all the fields" });
+        }
+
+        const user = await User.findOne({ username });
+        if(!user) {
+            return res.status(401).send({ error: "User with this email does not exist" });
+        }
+
+        const isMatch = await bcryptjs.compare(password, user.password);
+
+        if(!isMatch) {
+            return res.status(403).send({ error: "Incorrect password" });
+        }
+        const token = jwt.sign({ id: user._id }, "passwordKey");
+        res.json({ token, user: { id: user._id, username: user.name }});
     } catch (err) {
         res.status(500).json({ error: err.message });
     }

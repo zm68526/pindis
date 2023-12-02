@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import AddUser from './components/AddUser';
 import { useNavigate } from "react-router-dom";
 import Axios from 'axios';
+import './components/AddItem.css'
+
+
 
 
 function SignupPage(props) {
@@ -11,7 +14,7 @@ function SignupPage(props) {
 
   const userAddHandler = async function(userData) {
     try {
-      const response = await Axios.post('http://localhost:8080/users', userData);
+      const response = await Axios.post('http://localhost:8080/users/signup', userData);
       console.log(response);
       navigate('/loggedin');
   } catch (error) {
