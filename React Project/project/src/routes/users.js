@@ -23,15 +23,15 @@ router.use(function(req, res, next) {
 router.post('/', async (req,res) => {
     try {
         const { username, password } = req.body;
-        if(!username || !password) {
-            return res.status(400).json({ msg: "Please enter all the fields"});
+        if (!username || !password) {
+            return res.status(400).json({ error: "Please enter all the fields" });
         }
         if (password.length < 6) {
-            return res.status(401).json({ msg: "Password should be at least 6 characters"});
+            return res.status(401).json({ error: "Password should be at least 6 characters" });
         }
         const existingUser = await User.findOne({ username });
         if (existingUser) {
-            return res.status(402).json({ msg: "User with the same username already exists" });
+            return res.status(402).json({ error: "User with the same username already exists" });
         }
         const hashedPassword = await bcryptjs.hash(password, 8);
         const newUser = new User({ username, password: hashedPassword });
