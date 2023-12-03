@@ -93,6 +93,7 @@ function App() {
   if (!items) return null;
 
   const loginHandler = function(userData) {
+      console.log("LOGIN HANDLER USERNAME: " + userData.username);
       setCurrentUser(userData.username);
       itemUpdate();
   };

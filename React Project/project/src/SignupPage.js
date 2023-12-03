@@ -3,6 +3,7 @@ import AddUser from './components/AddUser';
 import { useNavigate } from "react-router-dom";
 import Axios from 'axios';
 import './components/AddItem.css'
+import './SignUpPage.css';
 
 
 
@@ -26,11 +27,16 @@ function SignupPage(props) {
   }
 };
 
+const loginRoute = () => {
+  navigate('/login');
+}
+
 
   return (
     <div>
         {error && <p style={{ color: 'red' }}>{error}</p>}
         <AddUser onAddItem={userAddHandler}/>
+        <a id='loginRoute' onClick={loginRoute}><p>Already have an account? Login here!</p></a>
     </div>
   ); 
 }

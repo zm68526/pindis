@@ -1,27 +1,27 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Axios from 'axios';
+import LoginUser from './components/LoginUser';
+import './LoginPage.css';
 
 function LoginPage(props) {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
-  const loginHandler = async () => {
+  const loginHandler = async (userData) => {
+
     try {
-      const response = await Axios.post('http://localhost:8080/users/login', {
-        username,
-        password,
-      });
+      const response = await Axios.post('http://localhost:8080/users/login', userData);
 
       const { token, user } = response.data;
 
       localStorage.setItem('token', token);
-
+      props.loginHandler(userData);
       navigate('/loggedin');
 
     } catch (error) {
+      console.log("ERROR");
       if (error.response && error.response.data.error) {
         setError(error.response.data.error);
       } else {
@@ -30,29 +30,15 @@ function LoginPage(props) {
     }
   };
 
+  const signUpRoute = () => {
+    navigate('/signup');
+  };
+
   return (
     <div>
-      <h2>Login Page</h2>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-      <label>
-        Username:
-        <input
-          type="text"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-      </label>
-      <br />
-      <label>
-        Password:
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-      </label>
-      <br />
-      <button onClick={loginHandler}>Login</button>
+    {error && <p style={{ color: 'red' }}>{error}</p>}
+    <LoginUser loginHandler={loginHandler} />
+    <a id='signUpRoute' onClick={signUpRoute}><p>Dont have an account? Sign up!</p></a>
     </div>
   );
 }

@@ -6,8 +6,9 @@ function MyPins(props) {
 
   // filter items so it only shows ones created with your username (props.user)
   // console.log(props.user);
-  console.log(props.pins);
+  props.rerenderHandler();
   let items = props.pins.filter(userData => userData.user === props.user);
+  console.log("PROPS USER: " + props.user);
 
   return (
     <div>

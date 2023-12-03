@@ -1,0 +1,11 @@
+#signUpRoute {
+    color: blue;
+}
+
+#signUpRoute:hover {
+    text-decoration: underline;
+}
+
+#signUpRoute p {
+    margin-left: 42%;
+}
