@@ -6,7 +6,7 @@ function AuthenticatedView(props) {
 
   return (
     <div>
-      <Hdr isLoggedIn={true} />
+      <Hdr user={props.user} isLoggedIn={true} />
       <ItemsList showEditDelete={false} items={props.pins} rerenderHandler = {props.rerenderHandler}/>
     </div>
   );

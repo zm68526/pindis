@@ -41,6 +41,7 @@ const Hdr = (props) => {
       <div className="hdr">
         <h1>PinDis</h1>
         <div className="buttons" >
+          <h2 id='welcome'>Welcome {props.user}!</h2>
           <Button onClick={authenticationToggle}>Log Out</Button>
           <Button onClick={myItemsHandler}>My Pins</Button>
           <Button onClick={addItemHandler}>New PinDis</Button>
