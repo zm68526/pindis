@@ -103,9 +103,9 @@ function App() {
       <div>
         <Routes>
           <Route exact path='/' element={<UnauthenticatedView pins={items} rerenderHandler={itemUpdate}/>} />
-          <Route path='/loggedin' element={<AuthenticatedView user={currentUser} pins={items} rerenderHandler={itemUpdate} user={currentUser}/>} />
+          <Route path='/loggedin' element={<AuthenticatedView user={currentUser} pins={items} rerenderHandler={itemUpdate} />} />
           <Route path='/add' element={<AddItemPage rerenderHandler={itemUpdate} user={currentUser}/>} />
-          <Route path='/signup' element={<SignupPage/>} />
+          <Route path='/signup' element={<SignupPage setUsernameAfterAdding={loginHandler}/>} />
           <Route path='/login' element={<LoginPage loginHandler={loginHandler}/>} />
           <Route path='edit-item/:id' element={<EditItemPage rerenderHandler={itemUpdate}/>} />
           <Route path='/myPins' element={<MyPins user={currentUser} pins={items} rerenderHandler={itemUpdate} />} />

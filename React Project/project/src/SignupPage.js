@@ -16,6 +16,7 @@ function SignupPage(props) {
   const userAddHandler = async function(userData) {
     try {
       const response = await Axios.post('http://localhost:8080/users/signup', userData);
+      props.setUsernameAfterAdding(userData);
       console.log(response);
       navigate('/loggedin');
   } catch (error) {
